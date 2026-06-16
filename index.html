@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RetailAI Catalyst — AI Transformation Dashboard</title>
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Mobile Header Bar -->
+  <div class="mobile-header-bar">
+    <div class="mobile-brand">
+      <div class="mobile-brand-icon">RA</div>
+      <span>RetailAI Catalyst</span>
+    </div>
+    <button class="hamburger" id="hamburger-toggle" aria-label="Toggle Navigation">
+      <i data-lucide="menu"></i>
+    </button>
+  </div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar-nav">
+      <div class="brand-section">
+        <div class="brand-icon">
+          <i data-lucide="sparkles"></i>
+        </div>
+        <h1 class="brand-name">
+          RetailAI Catalyst
+          <span>Transformation Strategy</span>
+        </h1>
+      </div>
+
+      <nav class="nav-menu">
+        <li class="nav-item active" data-tab="overview">
+          <button>
+            <i data-lucide="layout-dashboard"></i>
+            Executive Overview
+          </button>
+        </li>
+        <li class="nav-item" data-tab="readiness">
+          <button>
+            <i data-lucide="clipboard-check"></i>
+            AI Readiness
+          </button>
+        </li>
+        <li class="nav-item" data-tab="departments">
+          <button>
+            <i data-lucide="git-branch"></i>
+            Department Roadmap
+          </button>
+        </li>
+        <li class="nav-item" data-tab="training">
+          <button>
+            <i data-lucide="users"></i>
+            Champions & Training
+          </button>
+        </li>
+        <li class="nav-item" data-tab="governance">
+          <button>
+            <i data-lucide="shield-check"></i>
+            Governance & Trust
+          </button>
+        </li>
+        <li class="nav-item" data-tab="impact">
+          <button>
+            <i data-lucide="trending-up"></i>
+            KPI & Impact
+          </button>
+        </li>
+        <li class="nav-item" data-tab="scale">
+          <button>
+            <i data-lucide="milestone"></i>
+            Scaling Roadmap
+          </button>
+        </li>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="consultant-badge">
+          <div class="consultant-badge-title">Prepared by</div>
+          <div class="consultant-badge-name">RetailAI Consulting Group</div>
+        </div>
+        <button class="theme-toggle-btn" id="theme-toggle">
+          <i data-lucide="sun" class="sun-icon" style="display: none;"></i>
+          <i data-lucide="moon" class="moon-icon"></i>
+          <span id="theme-text">Toggle Theme</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      
+      <!-- 1. Executive Overview Tab -->
+      <section class="tab-pane active" id="overview-tab">
+        <div class="content-header">
+          <div class="header-meta">
+            <h1>Executive Overview</h1>
+            <p class="header-subtitle">Strategic snapshot of AI capability and initial roadmap priorities.</p>
+          </div>
+          <div class="client-tag">
+            <span class="client-dot"></span>
+            RetailAI Partner Portal
+          </div>
+        </div>
+
+        <div class="overview-grid">
+          <!-- Stat 1: Maturity -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">AI Maturity</span>
+              <div class="stat-icon"><i data-lucide="award"></i></div>
+            </div>
+            <div class="stat-value">Level 2</div>
+            <div class="stat-subtext">Explorer Stage</div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" style="width: 40%;"></div>
+            </div>
+          </div>
+          <!-- Stat 2: Leadership -->
+          <div class="stat-card accent-card">
+            <div class="stat-header">
+              <span class="stat-label">Leadership Readiness</span>
+              <div class="stat-icon"><i data-lucide="user-check"></i></div>
+            </div>
+            <div class="stat-value">72%</div>
+            <div class="stat-subtext">Strong alignment on value</div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" style="width: 72%;"></div>
+            </div>
+          </div>
+          <!-- Stat 3: Employee -->
+          <div class="stat-card accent-card">
+            <div class="stat-header">
+              <span class="stat-label">Employee Literacy</span>
+              <div class="stat-icon"><i data-lucide="book-open"></i></div>
+            </div>
+            <div class="stat-value">48%</div>
+            <div class="stat-subtext">Gap in practical AI tooling</div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" style="width: 48%;"></div>
+            </div>
+          </div>
+          <!-- Stat 4: Governance -->
+          <div class="stat-card gold-card">
+            <div class="stat-header">
+              <span class="stat-label">Governance & Security</span>
+              <div class="stat-icon"><i data-lucide="shield-alert"></i></div>
+            </div>
+            <div class="stat-value">35%</div>
+            <div class="stat-subtext">Needs usage policies & sandboxes</div>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" style="width: 35%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-row">
+          <!-- Left side: Strategy Overview -->
+          <div class="dashboard-card">
+            <h3 class="dashboard-card-title">
+              <i data-lucide="compass"></i> Strategic Assessment
+            </h3>
+            <div class="summary-box">
+              <div class="summary-illustration">
+                <i data-lucide="line-chart"></i>
+              </div>
+              <div class="summary-text">
+                <h3>Executive Core Findings</h3>
+                <p>
+                  Your leadership is strongly committed to integrating AI, but frontline enablement and formal data structures are limiting scaled rollouts. Starting with focused, low-risk pilots in HR policy response and Customer Service automation will yield high visibility and establish an operational playbook before tackling supply chain algorithms.
+                </p>
+              </div>
+            </div>
+            <div style="margin-top: 1.5rem;">
+              <h4 style="margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Priority Opportunities</h4>
+              <div class="opportunity-list">
+                <div class="opp-item">
+                  <div class="opp-content">
+                    <div class="opp-title">Internal HR Policy Assistant</div>
+                    <div class="opp-desc">Establish an instant answer database for employee policy manual, reducing manual admin workloads.</div>
+                    <span class="opp-badge indigo">HR Pilot</span>
+                  </div>
+                </div>
+                <div class="opp-item high">
+                  <div class="opp-content">
+                    <div class="opp-title">Customer Service Copilot</div>
+                    <div class="opp-desc">Draft responses for common inquiries, shortening resolution timelines from 12 hours down to 2 hours.</div>
+                    <span class="opp-badge teal">CS Pilot</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: Core Risks & Quick steps -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="dashboard-card" style="flex-grow: 1;">
+              <h3 class="dashboard-card-title">
+                <i data-lucide="alert-triangle"></i> Key Risks
+              </h3>
+              <div class="risk-grid">
+                <div class="risk-card">
+                  <div class="risk-indicator high"></div>
+                  <div class="risk-info">
+                    <h4>Governance Void</h4>
+                    <p>Employee shadow usage of public AI tools increases risk of client/business data leakage.</p>
+                  </div>
+                </div>
+                <div class="risk-card">
+                  <div class="risk-indicator med"></div>
+                  <div class="risk-info">
+                    <h4>Literacy Gap</h4>
+                    <p>Frontline staff lack clear playbooks, causing low engagement with pilot tools.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-card" style="flex-grow: 1;">
+              <h3 class="dashboard-card-title">
+                <i data-lucide="list-todo"></i> Next Steps
+              </h3>
+              <div class="step-list">
+                <div class="step-card">
+                  <div class="step-num">1</div>
+                  <div class="step-info">
+                    <div class="step-title">Form AI Steering Committee</div>
+                    <div class="step-owner">Executive Lead</div>
+                  </div>
+                </div>
+                <div class="step-card">
+                  <div class="step-num">2</div>
+                  <div class="step-info">
+                    <div class="step-title">Draft AI Policy & Sandbox Rules</div>
+                    <div class="step-owner">Legal & Compliance</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. AI Readiness Assessment Tab -->
+      <section class="tab-pane" id="readiness-tab">
+        <div class="content-header">
+          <div class="header-meta">
+            <h1>AI Readiness Assessment</h1>
+            <p class="header-subtitle">Evaluate your organizational readiness. Complete the questionnaire to generate a rollout path.</p>
+          </div>
+        </div>
+
+        <div class="quiz-container">
+          <!-- Quiz Form -->
+          <div class="quiz-card" id="quiz-card-wrapper">
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-step active" data-step="1">1</div>
+              <div class="quiz-progress-step" data-step="2">2</div>
+              <div class="quiz-progress-step" data-step="3">3</div>
+              <div class="quiz-progress-step" data-step="4">4</div>
+              <div class="quiz-progress-step" data-step="5">5</div>
+            </div>
+
+            <!-- Question 1: Leadership -->
+            <div class="question-view active" data-step="1">
+              <span class="opp-badge indigo" style="margin-bottom: 0.5rem;">Leadership Commitment</span>
+              <h3 class="question-title">How aligned is leadership on the AI strategic roadmap?</h3>
+              <p class="question-desc">Evaluate the clarity of support, capital planning, and organizational understanding at the executive level.</p>
+              <div class="options-list">
+                <div class="option-item">
+                  <input type="radio" name="q1" id="q1_a" value="20">
+                  <label for="q1_a" class="option-label">
+                    <span class="option-dot"></span>
+                    No active alignment or formal planning; AI is seen primarily as an IT experiment.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q1" id="q1_b" value="60">
+                  <label for="q1_b" class="option-label">
+                    <span class="option-dot"></span>
+                    Broad interest; leadership is planning initial exploratory pilots, but has no dedicated budget.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q1" id="q1_c" value="100">
+                  <label for="q1_c" class="option-label">
+                    <span class="option-dot"></span>
+                    Fully committed strategy; dedicated capital, designated sponsors, and clear corporate OKRs exist.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 2: Literacy -->
+            <div class="question-view" data-step="2">
+              <span class="opp-badge indigo" style="margin-bottom: 0.5rem;">Employee AI Literacy</span>
+              <h3 class="question-title">What is the current level of AI literacy among your employees?</h3>
+              <p class="question-desc">Assess general understanding of how to prompt, evaluate output, and work safely with AI models.</p>
+              <div class="options-list">
+                <div class="option-item">
+                  <input type="radio" name="q2" id="q2_a" value="20">
+                  <label for="q2_a" class="option-label">
+                    <span class="option-dot"></span>
+                    Low awareness; employees rely strictly on legacy tools and feel concerned about job displacement.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q2" id="q2_b" value="60">
+                  <label for="q2_b" class="option-label">
+                    <span class="option-dot"></span>
+                    Some employees are self-taught or use basic generative tools, but no structured training exists.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q2" id="q2_c" value="100">
+                  <label for="q2_c" class="option-label">
+                    <span class="option-dot"></span>
+                    Structured training pathways exist; champions lead team adoption and handle prompting best practices.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 3: Data Maturity -->
+            <div class="question-view" data-step="3">
+              <span class="opp-badge indigo" style="margin-bottom: 0.5rem;">Data Maturity</span>
+              <h3 class="question-title">How centralized and structured is your retail data?</h3>
+              <p class="question-desc">Assess the readiness of data pipelines for training models or building secure RAG-based systems.</p>
+              <div class="options-list">
+                <div class="option-item">
+                  <input type="radio" name="q3" id="q3_a" value="20">
+                  <label for="q3_a" class="option-label">
+                    <span class="option-dot"></span>
+                    Siloed operational data; legacy databases with significant data cleanup required before ingestion.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q3" id="q3_b" value="60">
+                  <label for="q3_b" class="option-label">
+                    <span class="option-dot"></span>
+                    Central warehouse exists (e.g., Snowflake, BigQuery), but metadata schema is inconsistent.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q3" id="q3_c" value="100">
+                  <label for="q3_c" class="option-label">
+                    <span class="option-dot"></span>
+                    Structured data warehouse with robust real-time API layers and standardized schema integrations.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 4: Governance -->
+            <div class="question-view" data-step="4">
+              <span class="opp-badge indigo" style="margin-bottom: 0.5rem;">Governance & Compliance</span>
+              <h3 class="question-title">What governance protocols do you have for enterprise AI use?</h3>
+              <p class="question-desc">Evaluate security sandboxes, usage guidelines, risk frameworks, and output validation policies.</p>
+              <div class="options-list">
+                <div class="option-item">
+                  <input type="radio" name="q4" id="q4_a" value="20">
+                  <label for="q4_a" class="option-label">
+                    <span class="option-dot"></span>
+                    No policy exists; team uses consumer-facing tools without monitoring or validation.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q4" id="q4_b" value="60">
+                  <label for="q4_b" class="option-label">
+                    <span class="option-dot"></span>
+                    Basic guidelines defined, but lacks automated tracking, security sandboxes, or validation workflows.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q4" id="q4_c" value="100">
+                  <label for="q4_c" class="option-label">
+                    <span class="option-dot"></span>
+                    Clear usage policies, secure sandbox setups, risk registers, and mandatory human sign-off loops.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 5: Strategic Alignment -->
+            <div class="question-view" data-step="5">
+              <span class="opp-badge indigo" style="margin-bottom: 0.5rem;">Strategic Alignment</span>
+              <h3 class="question-title">How well does your AI plan align with core business KPIs?</h3>
+              <p class="question-desc">Evaluate if your planned AI integrations directly feed into measurable financial or customer metrics.</p>
+              <div class="options-list">
+                <div class="option-item">
+                  <input type="radio" name="q5" id="q5_a" value="20">
+                  <label for="q5_a" class="option-label">
+                    <span class="option-dot"></span>
+                    AI targets are generic (e.g. 'increase productivity') without direct business metric links.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q5" id="q5_b" value="60">
+                  <label for="q5_b" class="option-label">
+                    <span class="option-dot"></span>
+                    Tied to departmental KPIs (e.g., response times), but lacks direct correlation to bottom-line revenue.
+                  </label>
+                </div>
+                <div class="option-item">
+                  <input type="radio" name="q5" id="q5_c" value="100">
+                  <label for="q5_c" class="option-label">
+                    <span class="option-dot"></span>
+                    Direct financial linkages; projects ranked by ROI, cost-offset models, and customer retention metrics.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="quiz-actions">
+              <button class="btn btn-secondary" id="quiz-prev-btn" disabled>Back</button>
+              <button class="btn btn-primary" id="quiz-next-btn">Next</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Assessment Output -->
+          <div class="results-card" id="quiz-results-card">
+            <!-- Dynamic radial score will render here -->
+            <div class="results-radial">
+              <svg>
+                <defs>
+                  <linearGradient id="grad-radial" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--primary)" />
+                    <stop offset="100%" stop-color="var(--accent)" />
+                  </linearGradient>
+                </defs>
+                <circle class="circle-bg" cx="80" cy="80" r="70"></circle>
+                <circle class="circle-progress" id="result-stroke-circle" cx="80" cy="80" r="70" stroke-dasharray="440" stroke-dashoffset="440"></circle>
+              </svg>
+              <div class="results-score-text">
+                <span id="display-score">--</span>
+                <span class="results-score-label">Readiness</span>
+              </div>
+            </div>
+
+            <h3 class="results-title" id="result-stage-title">Awaiting Assessment</h3>
+            <p class="results-desc" id="result-stage-desc">Please answer the strategic diagnostic questions on the left. The engine will calculate your maturity category and propose an optimized implementation plan.</p>
+
+            <div class="results-details" id="result-details-panel" style="display: none;">
+              <h4 class="results-details-title">Suggested Core Initial Use Cases</h4>
+              <div class="usecase-tag-list" id="result-usecases">
+                <!-- Tags populated dynamically -->
+              </div>
+
+              <div class="rollout-path-box">
+                <h5 id="result-path-title">Recommended Rollout Path</h5>
+                <p id="result-path-desc">A customized integration roadmap based on your current constraints and organizational capacity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Department Roadmap Tab -->
+      <section class="tab-pane" id="departments-tab">
+        <div class="content-header">
+          <div class="header-meta">
+            <h1>Department Roadmap</h1>
+            <p class="header-subtitle">Tailored AI implementation blueprints structured across core retail departments.</p>
+          </div>
+        </div>
+
+        <nav class="dept-nav">
+          <button class="dept-tab-btn active" data-dept="hr">HR</button>
+          <button class="dept-tab-btn" data-dept="marketing">Marketing</button>
+          <button class="dept-tab-btn" data-dept="finance">Finance</button>
+          <button class="dept-tab-btn" data-dept="operations">Operations</button>
+          <button class="dept-tab-btn" data-dept="cs">Customer Service</button>
+        </nav>
+
+        <div class="dept-roadmap-grid">
+          <!-- Left Details Panel -->
+          <div class="dept-detail-card" id="dept-detail-display">
+            <!-- Dynamically Populated Card Details -->
+            <div class="dept-card-header">
+              <div class="dept-title-group">
+                <div class="dept-icon-wrapper" id="dept-display-icon">
+                  <i data-lucide="users"></i>
+                </div>
+                <h3 class="dept-heading" id="dept-display-name">Human Resources</h3>
+              </div>
+              <span class="badge badge-med" id="dept-display-priority">Priority: Medium</span>
+            </div>
+
+            <div class="info-block-grid">
+              <div class="info-block">
+                <div class="info-block-label">
+                  <i data-lucide="alert-circle"></i> Identified Problem
+                </div>
+                <div class="info-block-content" id="dept-display-problem">
+                  Slow internal policy responses and heavy manual administrative burden on HR specialists.
+                </div>
+              </div>
+
+              <div class="info-block">
+                <div class="info-block-label">
+                  <i data-lucide="cpu"></i> Proposed AI Use Case
+                </div>
+                <div class="info-block-content" id="dept-display-usecase">
+                  RAG-based Internal HR virtual assistant to instantly answer policy and guideline queries.
+                </div>
+              </div>
+
+              <div class="info-block">
+                <div class="info-block-label">
+                  <i data-lucide="gift"></i> Expected Benefit
+                </div>
+                <div class="info-block-content" id="dept-display-benefit">
+                  Accelerated employee support pipelines and automated initial stages of recruitment formatting.
+                </div>
+              </div>
+
+              <div class="info-block">
+                <div class="info-block-label">
+                  <i data-lucide="gauge"></i> Target KPI to Track
+                </div>
+                <div class="info-block-content" id="dept-display-kpi">
+                  HR Response Resolution Time
+                </div>
+              </div>
+            </div>
+
+            <div class="dept-kpi-panel">
+              <div class="dept-kpi-left">
+                <h6>Target Performance Uplift</h6>
+                <p>Expected change in core department KPI post-rollout.</p>
+              </div>
+              <div class="dept-kpi-metric" id="dept-display-uplift">
+                -65% Time
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar Options -->
+          <div class="dept-summary-sidebar">
+            <div class="dept-summary-card active" data-dept-select="hr">
+              <div class="dept-summary-info">
+                <h5>Human Resources</h5>
+                <p>Internal Assistant & Recruitment</p>
+              </div>
+              <span class="badge badge-med">Medium</span>
+            </div>
+            <div class="dept-summary-card" data-dept-select="marketing">
+              <div class="dept-summary-info">
+                <h5>Marketing</h5>
+                <p>Asset Generation & Personalization</p>
+              </div>
+              <span class="badge badge-med">Medium</span>
+            </div>
+            <div class="dept-summary-card" data-dept-select="finance">
+              <div class="dept-summary-info">
+                <h5>Finance</h5>
+                <p>Audit Automation & Fraud Checks</p>
+              </div>
+              <span class="badge badge-low">Low</span>
+            </div>
+            <div class="dept-summary-card" data-dept-select="operations">
+              <div class="dept-summary-info">
+                <h5>Operations</h5>
+                <p>Predictive Logistics & Scheduling</p>
+              </div>
+              <span class="badge badge-high">High</span>
+            </div>
+            <div class="dept-summary-card" data-dept-select="cs">
+              <div class="dept-summary-info">
+                <h5>Customer Service</h5>
+                <p>Copilot Drafts & Support Agents</p>
+              </div>
+              <span class="badge badge-high">High</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Champions & Training Hub Tab -->
+      <section class="tab-pane" id="training-tab">
+        <div class="content-header">
+          <div class="header-meta">
+            <h1>AI Champions & Training Hub</h1>
+            <p class="header-subtitle">Aligning organization structure and human capabilities with AI integration goals.</p>
+          </div>
+        </div>
+
+        <div class="training-grid">
+          <!-- Left: Training Progress & Champions -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Training Progress -->
+            <div class="dashboard-card">
+              <h3 class="dashboard-card-title">
+                <i data-lucide="graduation-cap"></i> Role-Specific Training Tracker
+              </h3>
+              <div class="progress-list">
+                <div class="progress-track-item">
+                  <div class="progress-track-header">
+                    <span class="progress-track-title">Executive AI Strategy & Governance</span>
+                    <span class="progress-track-pct">85% Complete</span>
+                  </div>
+                  <div class="progress-track-bar">
+                    <div class="progress-track-fill" style="width: 85%;"></div>
+                  </div>
+                </div>
+                <div class="progress-track-item">
+                  <div class="progress-track-header">
+                    <span class="progress-track-title">Mid-Management Use-case Scoping</span>
+                    <span class="progress-track-pct">60% Complete</span>
+                  </div>
+                  <div class="progress-track-bar">
+                    <div class="progress-track-fill" style="width: 60%;"></div>
+                  </div>
+                </div>
+                <div class="progress-track-item">
+                  <div class="progress-track-header">
+                    <span class="progress-track-title">Frontline Support Copilot Prompting</span>
+                    <span class="progress-track-pct">35% Complete</span>
+                  </div>
+                  <div class="progress-track-bar">
+                    <div class="progress-track-fill" style="width: 35%;"></div>
+                  </div>
+                </div>
+                <div class="progress-track-item">
+                  <div class="progress-track-header">
+                    <span class="progress-track-title">Warehouse Predictive Tools Onboarding</span>
+                    <span class="progress-track-pct">15% Complete</span>
+                  </div>
+                  <div class="progress-track-bar">
+                    <div class="progress-track-fill" style="width: 15%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Department AI Champions -->
+            <div class="dashboard-card">
+              <h3 class="dashboard-card-title">
+                <i data-lucide="crown"></i> Department AI Champions
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                Internal business leads driving standard usage, flagging issues, and supporting peer enablement.
+              </p>
+              <div class="champion-card-list">
+                <div class="champion-card">
+                  <div class="champion-avatar">ER</div>
+                  <div class="champion-details">
+                    <h5>Elena Rostova</h5>
+                    <p>HR Systems Lead</p>
+                    <span class="champion-dept-badge">HR Champion</span>
+                  </div>
+                </div>
+                <div class="champion-card">
+                  <div class="champion-avatar">MC</div>
+                  <div class="champion-details">
+                    <h5>Marcus Chen</h5>
+                    <p>Marketing Dir.</p>
+                    <span class="champion-dept-badge">Marketing Champion</span>
+                  </div>
+                </div>
+                <div class="champion-card">
+                  <div class="champion-avatar">SW</div>
+                  <div class="champion-details">
+                    <h5>Sarah Wright</h5>
+                    <p>Logistics Manager</p>
+                    <span class="champion-dept-badge">Operations Champion</span>
+                  </div>
+                </div>
+                <div class="champion-card">
+                  <div class="champion-avatar">DK</div>
+                  <div class="champion-details">
+                    <h5>David Kim</h5>
+                    <p>Support Director</p>
+                    <span class="champion-dept-badge">Customer Service</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Communication Calendar -->
+          <div class="dashboard-card" style="display: flex; flex-direction: column;">
+            <h3 class="dashboard-card-title">
+              <i data-lucide="calendar"></i> Internal Communication Calendar
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Transparent scheduling of updates, newsletters, and feedback collections to foster trust.
+            </p>
+
+            <div class="calendar-card">
+              <div class="calendar-header">
+                <span style="font-weight: 700; font-size: 0.95rem;" id="calendar-month-year">June 2026</span>
+                <div class="calendar-nav">
+                  <button class="calendar-nav-btn" id="cal-prev" aria-label="Previous Month">
+                    <i data-lucide="chevron-left"></i>
+                  </button>
+                  <button class="calendar-nav-btn" id="cal-next" aria-label="Next Month">
+                    <i data-lucide="chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="calendar-grid" id="calendar-events-container">
+                <!-- Dynamically generated events -->
+              </div>
+            </div>
+
+            <div class="summary-box" style="margin-top: auto; padding: 1rem;">
+              <i data-lucide="message-square" style="color: var(--accent); flex-shrink: 0; width: 20px; height: 20px;"></i>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">
+                <strong>Key Insight:</strong> 82% of retailers reporting failed AI integrations cited cultural misalignment and lack of structured communication over raw technical errors.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Governance & Trust Center Tab -->
+      <section class="tab-pane" id="governance-tab">
+        <div class="content-header">
+          <div class="header-meta">
+            <h1>Governance & Trust Center</h1>
+            <p class="header-subtitle">Corporate guardrails, audit standards, and risk monitoring frameworks.</p>
+          </div>
+        </div>
+
+        <div class="governance-grid">
+          <!-- Left: Policy & Compliance Checklist -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="dashboard-card">
+              <h3 class="dashboard-card-title">
+                <i data-lucide="lock"></i> AI Usage Policy Guardrails
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+                All AI systems deployed within our retail structure must strictly follow three operational axioms:
+              </p>
+              <div class="step-list">
+                <div class="step-card" style="padding: 0.85rem;">
+                  <div class="step-num" style="background: var(--accent-glow); color: var(--accent);">A</div>
+                  <div class="step-info">
+                    <div class="step-title">Zero Data Leakage</div>
+                    <div class="step-owner">No customer records or vendor pricing shared with public model systems.</div>
+                  </div>
+                </div>
+                <div class="step-card" style="padding: 0.85rem;">
+                  <div class="step-num" style="background: var(--accent-glow); color: var(--accent);">B</div>
+                  <div class="step-info">
+                    <div class="step-title">Human Verification Loop</div>
+                    <div class="step-owner">Any generative copy, code, or customer interaction draft requires human sign-off before launch.</div>
+                  </div>
+                </div>
+                <div class="step-card" style="padding: 0.85rem;">
+                  <div class="step-num" style="background: var(--accent-glow); color: var(--accent);">C</div>
+                  <div class="step-info">
+                    <div class="step-title">Algorithm Transparency</div>
+                    <div class="step-owner">No black-box models used for customer demographic profiling.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <h3 class="dashboard-card-title">
+                <i data-lucide="shield-check"></i> Compliance Readiness Checklist
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Interactive audit milestones. Check items to simulate audit validation and update the Trust Index.
+              </p>
+              <div class="compliance-checklist">
+                <div class="checklist-item checked" data-checklist-id="1">
+                  <div class="checklist-checkbox"><i data-lucide="check"></i></div>
+                  <span class="checklist-text">Perform legal review on public LLM provider Terms of Service</span>
+                </div>
+                <div class="checklist-item checked" data-checklist-id="2">
+                  <div class="checklist-checkbox"><i data-lucide="check"></i></div>
+                  <span class="checklist-text">Implement custom API wrapper preventing IP and customer PII routing</span>
+                </div>
+                <div class="checklist-item" data-checklist-id="3">
+                  <div class="checklist-checkbox"><i data-lucide="check"></i></div>
+                  <span class="checklist-text">Draft standard training protocols for copilot prompt safety</span>
+                </div>
+                <div class="checklist-item" data-checklist-id="4">
+                  <div class="checklist-checkbox"><i data-lucide="check"></i></div>
+                  <span class="checklist-text">Establish secondary validation guidelines for inventory forecasting outputs</span>
+                </div>
+                <div class="checklist-item" data-checklist-id="5">
+                  <div class="checklist-checkbox"><i data-lucide="check"></i></div>
+                  <span class="checklist-text">Set up quarterly steering committee review cycles</span>
+                </div>
+              </div>
+
+              <div class="trust-index-meter">
+                <div class="trust-meter-wrapper">
+                  <div class="trust-meter-gauge" id="trust-gauge"></div>
+                  <span class="trust-meter-value" id="trust-score-pct">40%</span>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary);">Audit Trust Index Score</span>
+                <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Directly correlates to compliance safety rating</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Risk Flags & Status -->
+          <div class="dashboard-card" style="display: flex; flex-direction: column;">
+            <h3 class="dashboard-card-title">
+              <i data-lucide="alert-octagon"></i> Core AI Risk Register
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+              Real-time monitoring of corporate risks, alignment requirements, and model audit labels.
+            </p>
+
+            <table class="risk-register-table">
+              <thead>
+                <tr>
+                  <th>Identified Risk</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Customer Support PII Leakage</strong>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">Support copilot routes billing addresses.</div>
+                  </td>
+                  <td>Data Privacy</td>
+                  <td>
+                    <span class="status-badge signoff">Sign-off Req.</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Pricing Algorithm Collision</strong>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">Model conflicts with competitor scrapers.</div>
+                  </td>
+                  <td>Operations</td>
+                  <td>
+                    <span class="status-badge review">Needs Review</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Content Output Bias</strong>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">Marketing generation skews tone.</div>
+                  </td>
+                  <td>Ethics</td>
+                  <td>
+                    <span class="status-badge approved">Approved</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Data Schema Incompatibility</strong>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">Warehouse feed breaks model fine-tuner.</div>
+                  </td>
+                  <td>System Architecture</td>
+                  <td>
+                    <span class="status-badge risk">High Risk</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Employee Shadow Tooling</strong>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">Ad-hoc prompts in browser extensions.</div>
+                  </td>
+                  <td>Compliance</td>
+                  <td>
+                    <span class="status-badge review">Needs Review</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. KPI & Impact Dashboard Tab -->
+      <section class="tab-pane" id="impact-tab">
+        <div class="content-header">
+          <div class="header-meta">
+            <h1>KPI & Impact Dashboard</h1>
+            <p class="header-subtitle">Estimated return on investment and workflow optimizations post-transformation.</p>
+          </div>
+        </div>
+
+        <div class="kpi-tabs">
+          <button class="kpi-tab-btn active" data-kpi-cat="all">All Metrics</button>
+          <button class="kpi-tab-btn" data-kpi-cat="adoption">Adoption</button>
+          <button class="kpi-tab-btn" data-kpi-cat="efficiency">Efficiency</button>
+          <button class="kpi-tab-btn" data-kpi-cat="business">Business</button>
+          <button class="kpi-tab-btn" data-kpi-cat="financial">Financial</button>
+        </div>
+
+        <!-- Pilot Adoption Control Panel -->
+        <div class="slider-container" style="margin-bottom: 1.5rem;">
+          <div class="slider-header">
+            <span class="slider-label">Simulate Target Pilot Adoption Scale</span>
+            <span class="slider-val" id="adoption-val">40%</span>
+          </div>
+          <input type="range" min="10" max="100" value="40" class="custom-slider" id="adoption-scale-slider" aria-label="Simulate Target Pilot Adoption Scale">
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">
+            Adjust the slider to simulate impact scaling across staff, storefronts, and backend systems.
+          </p>
+        </div>
+
+        <div class="kpi-grid">
+          <!-- Card 1: CS response (Efficiency) -->
+          <div class="kpi-card" data-cat="efficiency">
+            <div class="kpi-card-header">
+              <span class="kpi-card-category">Efficiency</span>
+              <i data-lucide="clock" style="color: var(--primary);"></i>
+            </div>
+            <h4 class="kpi-card-title">Customer Service Response Time</h4>
+            <div class="kpi-comparison">
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Before</span>
+                <span class="kpi-metric-value before">12 Hrs</span>
+              </div>
+              <div class="kpi-arrow-icon"><i data-lucide="arrow-right"></i></div>
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">After (Proj.)</span>
+                <span class="kpi-metric-value after" id="metric-cs-time">2.0 Hrs</span>
+              </div>
+            </div>
+            <div class="kpi-visual-progress">
+              <div class="kpi-progress-label">
+                <span>Response Speedup</span>
+                <span id="metric-cs-pct">83% Better</span>
+              </div>
+              <div class="kpi-progress-track">
+                <div class="kpi-progress-fill-before" style="width: 17%;"></div>
+                <div class="kpi-progress-fill-after" id="metric-cs-fill" style="width: 83%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Forecast accuracy (Business) -->
+          <div class="kpi-card" data-cat="business">
+            <div class="kpi-card-header">
+              <span class="kpi-card-category">Business</span>
+              <i data-lucide="target" style="color: var(--accent);"></i>
+            </div>
+            <h4 class="kpi-card-title">Forecast Accuracy Rate</h4>
+            <div class="kpi-comparison">
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Before</span>
+                <span class="kpi-metric-value before">68%</span>
+              </div>
+              <div class="kpi-arrow-icon"><i data-lucide="arrow-right"></i></div>
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">After (Proj.)</span>
+                <span class="kpi-metric-value after" id="metric-forecast-val">84%</span>
+              </div>
+            </div>
+            <div class="kpi-visual-progress">
+              <div class="kpi-progress-label">
+                <span>Accuracy Target</span>
+                <span id="metric-forecast-pct">84%</span>
+              </div>
+              <div class="kpi-progress-track">
+                <div class="kpi-progress-fill-before" style="width: 68%;"></div>
+                <div class="kpi-progress-fill-after" id="metric-forecast-fill" style="width: 84%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Hours Saved (Efficiency) -->
+          <div class="kpi-card" data-cat="efficiency">
+            <div class="kpi-card-header">
+              <span class="kpi-card-category">Efficiency</span>
+              <i data-lucide="zap" style="color: var(--primary);"></i>
+            </div>
+            <h4 class="kpi-card-title">Hours Saved Per Month</h4>
+            <div class="kpi-comparison">
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Baseline</span>
+                <span class="kpi-metric-value before">0 Hrs</span>
+              </div>
+              <div class="kpi-arrow-icon"><i data-lucide="arrow-right"></i></div>
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Saved (Proj.)</span>
+                <span class="kpi-metric-value after" id="metric-hours-saved">220 Hrs</span>
+              </div>
+            </div>
+            <div class="kpi-visual-progress">
+              <div class="kpi-progress-label">
+                <span>Resource Allocation Capacity</span>
+                <span id="metric-hours-pct">44% Of Goal</span>
+              </div>
+              <div class="kpi-progress-track">
+                <div class="kpi-progress-fill-before" style="width: 0%;"></div>
+                <div class="kpi-progress-fill-after" id="metric-hours-fill" style="width: 44%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Cost Savings (Financial) -->
+          <div class="kpi-card" data-cat="financial">
+            <div class="kpi-card-header">
+              <span class="kpi-card-category">Financial</span>
+              <i data-lucide="dollar-sign" style="color: var(--gold);"></i>
+            </div>
+            <h4 class="kpi-card-title">Yearly Operating Cost Reduction</h4>
+            <div class="kpi-comparison">
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Baseline</span>
+                <span class="kpi-metric-value before">$0</span>
+              </div>
+              <div class="kpi-arrow-icon"><i data-lucide="arrow-right"></i></div>
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Savings</span>
+                <span class="kpi-metric-value after" id="metric-savings-val">$340K</span>
+              </div>
+            </div>
+            <div class="kpi-visual-progress">
+              <div class="kpi-progress-label">
+                <span>ROI Performance Target</span>
+                <span id="metric-savings-pct">34% of Limit</span>
+              </div>
+              <div class="kpi-progress-track">
+                <div class="kpi-progress-fill-before" style="width: 0%;"></div>
+                <div class="kpi-progress-fill-after" id="metric-savings-fill" style="width: 34%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Training Completion (Adoption) -->
+          <div class="kpi-card" data-cat="adoption">
+            <div class="kpi-card-header">
+              <span class="kpi-card-category">Adoption</span>
+              <i data-lucide="award" style="color: var(--accent);"></i>
+            </div>
+            <h4 class="kpi-card-title">Staff Training Completion</h4>
+            <div class="kpi-comparison">
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Initial</span>
+                <span class="kpi-metric-value before">10%</span>
+              </div>
+              <div class="kpi-arrow-icon"><i data-lucide="arrow-right"></i></div>
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Current</span>
+                <span class="kpi-metric-value after" id="metric-training-val">48%</span>
+              </div>
+            </div>
+            <div class="kpi-visual-progress">
+              <div class="kpi-progress-label">
+                <span>Competency Benchmark</span>
+                <span id="metric-training-pct">48%</span>
+              </div>
+              <div class="kpi-progress-track">
+                <div class="kpi-progress-fill-before" style="width: 10%;"></div>
+                <div class="kpi-progress-fill-after" id="metric-training-fill" style="width: 48%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Customer Retention (Business) -->
+          <div class="kpi-card" data-cat="business">
+            <div class="kpi-card-header">
+              <span class="kpi-card-category">Business</span>
+              <i data-lucide="users" style="color: var(--accent);"></i>
+            </div>
+            <h4 class="kpi-card-title">Customer Retention Rate</h4>
+            <div class="kpi-comparison">
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Before</span>
+                <span class="kpi-metric-value before">78%</span>
+              </div>
+              <div class="kpi-arrow-icon"><i data-lucide="arrow-right"></i></div>
+              <div class="kpi-metric-box">
+                <span class="kpi-metric-label">Target (Proj.)</span>
+                <span class="kpi-metric-value after" id="metric-retention-val">84%</span>
+              </div>
+            </div>
+            <div class="kpi-visual-progress">
+              <div class="kpi-progress-label">
+                <span>Customer Loyalty Target</span>
+                <span id="metric-retention-pct">84%</span>
+              </div>
+              <div class="kpi-progress-track">
+                <div class="kpi-progress-fill-before" style="width: 78%;"></div>
+                <div class="kpi-progress-fill-after" id="metric-retention-fill" style="width: 84%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Scaling Roadmap Tab -->
+      <section class="tab-pane" id="scale-tab">
+        <div class="content-header">
+          <div class="header-meta">
+            <h1>Scaling Roadmap</h1>
+            <p class="header-subtitle">Phase-by-phase execution plan mapping retail AI adoption milestones.</p>
+          </div>
+        </div>
+
+        <div class="scale-timeline">
+          <!-- Phase 1 -->
+          <div class="timeline-phase active" data-phase="1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-phase-label">Phase 1 (Months 1–3)</div>
+              <h3 class="timeline-phase-title">Foundation & Pilots</h3>
+              <ul class="timeline-milestones">
+                <li>
+                  <i data-lucide="check-circle2"></i>
+                  Establish steering governance & compliance guidelines.
+                </li>
+                <li>
+                  <i data-lucide="check-circle2"></i>
+                  Initiate AI strategy training across leadership layers.
+                </li>
+                <li>
+                  <i data-lucide="check-circle2"></i>
+                  Roll out HR policy assistant & Customer Service drafting pilots.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="timeline-phase" data-phase="2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-phase-label">Phase 2 (Months 4–9)</div>
+              <h3 class="timeline-phase-title">Core Operational Rollout</h3>
+              <ul class="timeline-milestones">
+                <li>
+                  <i data-lucide="circle"></i>
+                  Scale automation to Finance auditing & Operation logs.
+                </li>
+                <li>
+                  <i data-lucide="circle"></i>
+                  Implement compliance logs & refine usage policy controls.
+                </li>
+                <li>
+                  <i data-lucide="circle"></i>
+                  Centralize KPI measurement frameworks dashboard.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="timeline-phase" data-phase="3">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-phase-label">Phase 3 (Months 10+)</div>
+              <h3 class="timeline-phase-title">Cognitive Storefronts</h3>
+              <ul class="timeline-milestones">
+                <li>
+                  <i data-lucide="circle"></i>
+                  Roll out computer-vision store intelligence.
+                </li>
+                <li>
+                  <i data-lucide="circle"></i>
+                  Deploy personalized recommendations engine.
+                </li>
+                <li>
+                  <i data-lucide="circle"></i>
+                  Launch corporate executive assistant copilot.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Footer -->
+      <footer class="dashboard-footer">
+        <div>&copy; 2026 RetailAI Catalyst. All rights reserved.</div>
+        <div class="footer-story">
+          RetailAI Catalyst helps retailers assess readiness, train teams, deploy AI use cases by department, govern responsible use, and measure business impact in one structured transformation journey.
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
