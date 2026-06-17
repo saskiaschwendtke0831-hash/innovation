@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeText = document.getElementById('theme-text');
   const htmlEl = document.documentElement;
 
-  // Read saved preference
   const savedTheme = localStorage.getItem('theme') || 'dark';
   htmlEl.setAttribute('data-theme', savedTheme);
   updateThemeIcons(savedTheme);
@@ -105,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressSteps = document.querySelectorAll('.quiz-progress-step');
   const questionViews = document.querySelectorAll('.question-view');
   
-  // Elements for dynamic result displaying
   const resultCircle = document.getElementById('result-stroke-circle');
   const scoreDisplay = document.getElementById('display-score');
   const resultStageTitle = document.getElementById('result-stage-title');
@@ -115,9 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultPathTitle = document.getElementById('result-path-title');
   const resultPathDesc = document.getElementById('result-path-desc');
 
-  // Quiz progression navigation handler
   nextBtn.addEventListener('click', () => {
-    // Check if user answered the current step's question
     const activeRadio = document.querySelector(`input[name="q${currentStep}"]:checked`);
     if (!activeRadio) {
       alert("Please select an option to proceed.");
@@ -128,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
       currentStep++;
       updateQuizUI();
     } else {
-      // Calculate assessment result
       calculateReadinessResults();
     }
   });
@@ -140,16 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Radio option labels clickable highlighting
-  document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      // Auto transition to next question after selecting (optional, but let's just make it feel interactive)
-      // We will allow users to review before clicking next
-    });
-  });
-
   function updateQuizUI() {
-    // Update progress indicator steps
     progressSteps.forEach((step, index) => {
       const stepNum = index + 1;
       step.classList.remove('active', 'completed');
@@ -160,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update active question view
     questionViews.forEach(view => {
       view.classList.remove('active');
       if (parseInt(view.getAttribute('data-step')) === currentStep) {
@@ -168,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Handle button labels and disabled states
     prevBtn.disabled = currentStep === 1;
     if (currentStep === totalSteps) {
       nextBtn.textContent = 'Submit Assessment';
@@ -195,14 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function animateQuizScore(score) {
     scoreDisplay.textContent = `${score}%`;
-    const circumference = 2 * Math.PI * 70; // 439.82 -> approx 440
+    const circumference = 2 * Math.PI * 70;
     const offset = circumference - (circumference * score / 100);
     resultCircle.style.strokeDasharray = `${circumference}`;
     resultCircle.style.strokeDashoffset = `${offset}`;
   }
 
   function updateQuizCircle() {
-    // Recalculates radial stroke in case view was loaded before dashboard rendered
     const displayVal = scoreDisplay.textContent;
     if (displayVal !== '--') {
       const score = parseInt(displayVal);
@@ -251,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resultPathTitle.textContent = rolloutTitle;
     resultPathDesc.textContent = rolloutDesc;
 
-    // Populate Use Cases
     resultUseCases.innerHTML = '';
     useCases.forEach(uc => {
       const tag = document.createElement('span');
@@ -260,10 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       resultUseCases.appendChild(tag);
     });
 
-    // Make panel visible
     resultDetailsPanel.style.display = 'block';
-    
-    // Refresh newly added icons
     lucide.createIcons();
   }
 
@@ -274,70 +253,89 @@ document.addEventListener('DOMContentLoaded', () => {
   const deptData = {
     hr: {
       name: "Human Resources",
+      type: "Internal Implementation",
       priority: "Medium",
       priorityClass: "badge-med",
-      problem: "Slow policy responses and administrative overload on specialist workflows.",
-      usecase: "Internal HR virtual assistant resolving basic policy inquiries using corporate manuals.",
-      benefit: "Accelerated employee response support and automated initial resume screening formats.",
-      kpi: "HR Query Resolution Time",
-      uplift: "-65% Duration"
+      typeClass: "badge-internal",
+      problem: "Slow internal policy responses, heavy administrative burden, and onboarding delays.",
+      usecase: "AI Policy Navigator, Recruitment Assistant, Onboarding Coach, and L&D Curator.",
+      benefit: "Instantly answers policy queries via voice/chat, screens CVs bias-free, and customizes onboarding journeys.",
+      kpi: "HR Query Resolution Speed & Onboarding Task Completion Rate",
+      uplift: "-40% Time Saved"
     },
     marketing: {
       name: "Marketing & Creative",
+      type: "Internal Implementation",
       priority: "Medium",
       priorityClass: "badge-med",
-      problem: "High external costs for local assets and slow deployment cycles for personalized campaigns.",
-      usecase: "Generative copy templates and product asset generation using branding-aligned models.",
-      benefit: "Instant campaign copy variations and quick background scene generations for e-commerce assets.",
-      kpi: "Content Asset Creation Speed",
-      uplift: "10x Output"
+      typeClass: "badge-internal",
+      problem: "High external asset agency costs, slow localized campaigns, and lack of content scaling.",
+      usecase: "AI Content Studio, Trend Radar Dashboard, Campaign Optimizer, and Creative Collaboration Hub.",
+      benefit: "Generates multi-tone copies, monitors trending hashtags, and simulates A/B performance outcomes before budget spend.",
+      kpi: "Asset Cycle Time & Ad Campaign Conversion Growth",
+      uplift: "10x Output Velocity"
     },
     finance: {
       name: "Finance & Accounting",
+      type: "Internal Implementation",
       priority: "Low",
       priorityClass: "badge-low",
-      problem: "Manual validation loops for vendor invoices and periodic inventory audit mismatches.",
-      usecase: "Automated document OCR extraction and transactional anomaly detection algorithms.",
-      benefit: "Fewer processing errors, expedited compliance audits, and real-time fraud alert triggers.",
-      kpi: "Invoice Audit Processing Speed",
-      uplift: "-80% Time"
+      typeClass: "badge-internal",
+      problem: "Labor-intensive vendor invoice validation, audit cycle bottlenecks, and cash flow planning volatility.",
+      usecase: "Smart Report Validator, Cash Flow Forecaster, Budget Alignment Assistant, and Scenario Simulation Engine.",
+      benefit: "Scans financial reports for anomalies, predicts liquidity risks, and models what-if revenue fluctuations.",
+      kpi: "Report Audit Speed & Unresolved Overspend Incidents",
+      uplift: "-35% Cycle Time"
+    },
+    research: {
+      name: "Research & Development",
+      type: "Internal Implementation",
+      priority: "Low",
+      priorityClass: "badge-low",
+      typeClass: "badge-internal",
+      problem: "Inconsistent prompt structures, slow sustainability modeling, and risk of untested storefront concepts.",
+      usecase: "Prompt Engineering Knowledge Hub, Retail Innovation Sandbox, and Material Optimization models.",
+      benefit: "Stores optimized prompt templates, conducts sustainability trade-off checks, and tests digital mirrors in a sandbox environment.",
+      kpi: "Pilot-to-Scale Time & Recommendation Acceptance Rate",
+      uplift: "-25% concept validation"
     },
     operations: {
       name: "Store Operations & Logistics",
+      type: "External Implementation",
       priority: "High",
       priorityClass: "badge-high",
-      problem: "Inaccurate storefront inventory demand forecasts causing warehouse stockouts.",
-      usecase: "Predictive logistics forecasting and scheduling integrated into inventory systems.",
-      benefit: "Optimized inventory holding volumes and automated replenishment recommendations.",
-      kpi: "Out-of-Stock Store Incidents",
-      uplift: "-22% Stockouts"
+      typeClass: "badge-external",
+      problem: "Inaccurate storefront stock predictions causing warehouse backlogs or empty retail shelves.",
+      usecase: "Customer Flow Management, Smart Inventory & Product Placement, and Smart Workforce Scheduler.",
+      benefit: "Tracks section convert rates via in-store sensors, suggests dynamic product shelving, and matches staff shifts to traffic peaks.",
+      kpi: "Out-of-Stock Shelf Rates & Staff Overlapping Cost",
+      uplift: "+20% Forecast Accuracy"
     },
     cs: {
       name: "Customer Service",
+      type: "External Implementation",
       priority: "High",
       priorityClass: "badge-high",
-      problem: "Heavy daily inquiry counts creating response backlogs of over 12 hours.",
-      usecase: "Support agent drafts and automated response templates for order-tracking questions.",
-      benefit: "Instant ticket categorization and rapid response drafts for review by human agents.",
-      kpi: "Average Inquiry Resolution Time",
-      uplift: "12h → 2h"
+      typeClass: "badge-external",
+      problem: "High daily ticket inquiries generating resolution backlogs of over 12 hours.",
+      usecase: "AI Customer Support Agent, Sentiment-Based Routing, and Customer Memory Layer.",
+      benefit: "Resolves shipment checks instantly, routes frustrated inquiries to managers, and retains cross-channel interaction histories.",
+      kpi: "Average Resolution Time & Customer Morale Scoring",
+      uplift: "12 Hrs → 2 Hrs"
     }
   };
 
   const deptTabBtns = document.querySelectorAll('.dept-tab-btn');
   const deptSummaryCards = document.querySelectorAll('.dept-summary-card');
 
-  // Handle Main Nav buttons
   deptTabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const selectedDept = btn.getAttribute('data-dept');
       updateDeptView(selectedDept);
       
-      // Update active nav button
       deptTabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // Sync sidebar card
       deptSummaryCards.forEach(card => {
         card.classList.remove('active');
         if (card.getAttribute('data-dept-select') === selectedDept) {
@@ -347,17 +345,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Handle Sidebar Summary Cards
   deptSummaryCards.forEach(card => {
     card.addEventListener('click', () => {
       const selectedDept = card.getAttribute('data-dept-select');
       updateDeptView(selectedDept);
 
-      // Update active card style
       deptSummaryCards.forEach(c => c.classList.remove('active'));
       card.classList.add('active');
 
-      // Sync nav button
       deptTabBtns.forEach(btn => {
         btn.classList.remove('active');
         if (btn.getAttribute('data-dept') === selectedDept) {
@@ -373,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nameEl = document.getElementById('dept-display-name');
     const priorityEl = document.getElementById('dept-display-priority');
+    const typeEl = document.getElementById('dept-display-type');
     const problemEl = document.getElementById('dept-display-problem');
     const usecaseEl = document.getElementById('dept-display-usecase');
     const benefitEl = document.getElementById('dept-display-benefit');
@@ -380,28 +376,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const upliftEl = document.getElementById('dept-display-uplift');
     const iconEl = document.getElementById('dept-display-icon');
 
-    // Trigger smooth fade-in animation by re-adding the class
     const panel = document.getElementById('dept-detail-display');
     panel.style.animation = 'none';
-    panel.offsetHeight; /* trigger reflow */
+    panel.offsetHeight; 
     panel.style.animation = null;
 
-    // Update texts
     nameEl.textContent = data.name;
     priorityEl.textContent = `Priority: ${data.priority}`;
+    typeEl.textContent = data.type;
     problemEl.textContent = data.problem;
     usecaseEl.textContent = data.usecase;
     benefitEl.textContent = data.benefit;
     kpiEl.textContent = data.kpi;
     upliftEl.textContent = data.uplift;
 
-    // Update priority class
     priorityEl.className = `badge ${data.priorityClass}`;
+    typeEl.className = `badge ${data.typeClass}`;
 
-    // Update icon wrapper class & icon itself
     let iconName = 'users';
     if (deptKey === 'marketing') iconName = 'palette';
     if (deptKey === 'finance') iconName = 'wallet';
+    if (deptKey === 'research') iconName = 'lightbulb';
     if (deptKey === 'operations') iconName = 'truck';
     if (deptKey === 'cs') iconName = 'message-circle';
     
@@ -411,7 +406,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /*****************************************
-   * 5. TRAINING HUB & COMMUNICATION CALENDAR
+   * 5. ROLE LEARNING PATHS (PILLAR 1)
+   *****************************************/
+  const learningBtns = document.querySelectorAll('.learning-tab-btn');
+  const learningDetails = document.querySelectorAll('.learning-path-detail');
+
+  learningBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedRole = btn.getAttribute('data-role');
+      
+      learningBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      learningDetails.forEach(detail => {
+        detail.classList.remove('active');
+        if (detail.getAttribute('data-role-detail') === selectedRole) {
+          detail.classList.add('active');
+        }
+      });
+    });
+  });
+
+
+  /*****************************************
+   * 6. TRAINING HUB & COMMUNICATION CALENDAR
    *****************************************/
   const calendarMonths = [
     {
@@ -484,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /*****************************************
-   * 6. GOVERNANCE CHECKLIST & TRUST SCALE
+   * 7. GOVERNANCE CHECKLIST & TRUST SCALE
    *****************************************/
   const checklistItems = document.querySelectorAll('.checklist-item');
   const trustGauge = document.getElementById('trust-gauge');
@@ -505,9 +523,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const percentage = Math.round((checkedCount / totalCount) * 100);
     trustScorePct.textContent = `${percentage}%`;
 
-    // Rotate gauge - baseline gauge is 120px circular half-donut rotated by -45deg.
-    // Let's control the rotation or clipping. Simple way is rotation transform.
-    // 0% -> -45deg, 100% -> 135deg (total 180 degrees sweep)
     const deg = -45 + (percentage * 1.8);
     if (trustGauge) {
       trustGauge.style.transform = `rotate(${deg}deg)`;
@@ -518,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /*****************************************
-   * 7. KPI & IMPACT INTERACTIVE SLIDER
+   * 8. KPI & IMPACT INTERACTIVE SLIDER
    *****************************************/
   const adoptionSlider = document.getElementById('adoption-scale-slider');
   const adoptionVal = document.getElementById('adoption-val');
@@ -533,10 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const val = parseInt(adoptionSlider.value);
     adoptionVal.textContent = `${val}%`;
 
-    // Compute dynamic figures based on adoption rate
-    
     // 1. Customer Service Time (12h down to 1.5h depending on scale)
-    // 10% adoption -> CS time = 10.5 hrs, 100% adoption -> CS time = 1.5 hrs
     const csTime = (12 - (val / 100) * 10.5).toFixed(1);
     const csTimeEl = document.getElementById('metric-cs-time');
     const csPctEl = document.getElementById('metric-cs-pct');
@@ -598,6 +610,47 @@ document.addEventListener('DOMContentLoaded', () => {
     if (retentionValEl) retentionValEl.textContent = `${retentionVal}%`;
     if (retentionPctEl) retentionPctEl.textContent = `${retentionVal}%`;
     if (retentionFillEl) retentionFillEl.style.width = `${retentionVal}%`;
+
+    // Update dynamically all 21 cells inside the KPI Framework table
+    updateKpiFrameworkTable(val);
+  }
+
+  function updateKpiFrameworkTable(sliderVal) {
+    const adoptionTarget = Math.round(sliderVal);
+    const efficiencyFactor = sliderVal / 100;
+
+    // Direct mapping to table cell IDs
+    updateCell('tb-hr-ad', `${adoptionTarget}%`);
+    updateCell('tb-hr-ef', `-${Math.round(efficiencyFactor * 40)}% time`);
+    updateCell('tb-hr-vl', `+${Math.round(efficiencyFactor * 20)}% rating`);
+
+    updateCell('tb-mk-ad', `${adoptionTarget}%`);
+    updateCell('tb-mk-ef', `-${Math.round(efficiencyFactor * 30)}% time`);
+    updateCell('tb-mk-vl', `+${Math.round(efficiencyFactor * 20)}% perform`);
+
+    updateCell('tb-fn-ad', `${Math.min(100, Math.round(adoptionTarget * 1.15))}%`);
+    updateCell('tb-fn-ef', `-${Math.round(efficiencyFactor * 35)}% time`);
+    updateCell('tb-fn-vl', `-${Math.round(efficiencyFactor * 50)}% risk count`);
+
+    updateCell('tb-rd-ad', `${Math.min(100, Math.round(adoptionTarget * 1.15))}%`);
+    updateCell('tb-rd-ef', `-${Math.round(efficiencyFactor * 25)}% time`);
+    updateCell('tb-rd-vl1', `${Math.round(50 + efficiencyFactor * 20)}%+ target`);
+    updateCell('tb-rd-vl2', `${Math.round(30 + efficiencyFactor * 20)}%+ recomm`);
+
+    updateCell('tb-op-ad', `${Math.round(adoptionTarget * 0.95)}%`);
+    updateCell('tb-op-ef', `+${Math.round(efficiencyFactor * 20)}% accuracy`);
+    updateCell('tb-op-vl1', `-${Math.round(efficiencyFactor * 25)}% costs`);
+    updateCell('tb-op-vl2', `+${Math.round(efficiencyFactor * 10)}% convert`);
+
+    updateCell('tb-cs-ad', `${adoptionTarget}%`);
+    updateCell('tb-cs-ef', `-${Math.round(efficiencyFactor * 45)}% time`);
+    updateCell('tb-cs-vl1', `+${Math.round(efficiencyFactor * 10)}% loyalty`);
+    updateCell('tb-cs-vl2', `${Math.round(30 + efficiencyFactor * 70)}% delivery`);
+  }
+
+  function updateCell(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
   }
 
   // Handle KPI Category filtering buttons
@@ -624,13 +677,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /*****************************************
-   * 8. SCALING TIMELINE INTERACTION
+   * 9. SCALING TIMELINE INTERACTION
    *****************************************/
   const timelinePhases = document.querySelectorAll('.timeline-phase');
 
   timelinePhases.forEach(phase => {
     phase.addEventListener('click', () => {
-      // Toggle active states on timeline
       timelinePhases.forEach(p => p.classList.remove('active'));
       phase.classList.add('active');
     });
