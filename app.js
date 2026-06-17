@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
       priority: "High",
       priorityClass: "badge-high",
       typeClass: "badge-external",
-      problem: "High daily ticket inquiries generating resolution backlogs of over 12 hours.",
+      problem: "High daily ticket inquiries generating response backlogs of over 12 hours.",
       usecase: "AI Customer Support Agent, Sentiment-Based Routing, and Customer Memory Layer.",
       benefit: "Resolves shipment checks instantly, routes frustrated inquiries to managers, and retains cross-channel interaction histories.",
       kpi: "Average Resolution Time & Customer Morale Scoring",
@@ -533,7 +533,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /*****************************************
-   * 8. KPI & IMPACT INTERACTIVE SLIDER
+   * 8. AI READINESS PASSPORT PROGRAM LOGIC
+   *****************************************/
+  const passportDeptSelect = document.getElementById('passport-dept');
+  const passportStageSelect = document.getElementById('passport-stage');
+  const passportDisplayTitle = document.getElementById('passport-display-title');
+  const passportDisplayCriteria = document.getElementById('passport-display-criteria');
+
+  const passportData = {
+    hr: {
+      explorer: "Complete AI Policy Navigator onboarding & complete 5 automated policy searches.",
+      practitioner: "Successfully run 10 CV screenings using the Recruitment Assistant and provide safety evaluations.",
+      champion: "Lead the team training workshop, validate 2 onboarding paths, and act as primary feedback focal.",
+      leader: "Design a new skill mapping recommendation module for the L&D Curator and present it to the steering committee."
+    },
+    marketing: {
+      explorer: "Access the Trend Radar Dashboard and identify 3 key trending topics relevant to your brand.",
+      practitioner: "Generate 5 brand-aligned campaign copies across channels using the AI Content Studio.",
+      champion: "Execute 2 pre-launch simulations in the Campaign Optimizer and present the ROI forecasts to leads.",
+      leader: "Conceive and moderate a collaborative idea voting sprint in the Creative Collaboration Hub."
+    },
+    finance: {
+      explorer: "Load and scan 3 invoices inside the Smart Report Validator to verify confidence flags.",
+      practitioner: "Set up reallocation parameters in the Budget Alignment Assistant and resolve 2 overspend warnings.",
+      champion: "Design cash flow risk mitigation prompts in the Predictive Forecaster for executive reviews.",
+      leader: "Run complex what-if scenarios inside the Scenario Simulation Engine to model raw margin risks."
+    },
+    operations: {
+      explorer: "Onboard on store traffic cameras and review dwell time heatmap records.",
+      practitioner: "Analyze converting percentages across sections and adjust shelving in Smart Inventory.",
+      champion: "Configure staffing profiles in the Smart Scheduler to match forecast traffic curves.",
+      leader: "Deploy in-store prediction models to automate restocking suggestions and measure stockout reductions."
+    },
+    cs: {
+      explorer: "Onboard on the Customer Support Agent interface and verify response draft controls.",
+      practitioner: "Resolve 15 inquiry tickets using model drafts and rate recommendation accuracy.",
+      champion: "Handle 5 high-frustration escalations redirected by sentiment routing loops.",
+      leader: "Analyze monthly Voice of the Customer sentiment reports to design churn intervention reward campaigns."
+    }
+  };
+
+  function updatePassportCriteria() {
+    const dept = passportDeptSelect.value;
+    const stage = passportStageSelect.value;
+    const criteria = passportData[dept][stage];
+
+    const stageLabel = passportStageSelect.options[passportStageSelect.selectedIndex].text;
+    const deptLabel = passportDeptSelect.options[passportDeptSelect.selectedIndex].text;
+
+    passportDisplayTitle.innerHTML = `<i data-lucide="shield-check"></i> ${deptLabel} – ${stageLabel} Criteria`;
+    passportDisplayCriteria.textContent = criteria;
+
+    lucide.createIcons();
+  }
+
+  if (passportDeptSelect && passportStageSelect) {
+    passportDeptSelect.addEventListener('change', updatePassportCriteria);
+    passportStageSelect.addEventListener('change', updatePassportCriteria);
+    updatePassportCriteria(); // Initial render
+  }
+
+
+  /*****************************************
+   * 9. KPI & IMPACT INTERACTIVE SLIDER
    *****************************************/
   const adoptionSlider = document.getElementById('adoption-scale-slider');
   const adoptionVal = document.getElementById('adoption-val');
@@ -619,7 +681,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const adoptionTarget = Math.round(sliderVal);
     const efficiencyFactor = sliderVal / 100;
 
-    // Direct mapping to table cell IDs
     updateCell('tb-hr-ad', `${adoptionTarget}%`);
     updateCell('tb-hr-ef', `-${Math.round(efficiencyFactor * 40)}% time`);
     updateCell('tb-hr-vl', `+${Math.round(efficiencyFactor * 20)}% rating`);
@@ -677,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /*****************************************
-   * 9. SCALING TIMELINE INTERACTION
+   * 10. SCALING TIMELINE INTERACTION
    *****************************************/
   const timelinePhases = document.querySelectorAll('.timeline-phase');
 

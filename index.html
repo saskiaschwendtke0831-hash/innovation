@@ -276,14 +276,30 @@
       <section class="tab-pane" id="readiness-tab">
         <div class="content-header">
           <div class="header-meta">
-            <h1>AI Readiness Assessment & Adoption</h1>
-            <p class="header-subtitle">Evaluate your organizational readiness. Complete the questionnaire to generate a rollout path.</p>
+            <h1>Pillar 1: Building an AI-Ready Retail Culture</h1>
+            <p class="header-subtitle">Create organization-wide readiness for AI by building executive sponsorship, employee trust, and role capability.</p>
+          </div>
+        </div>
+
+        <!-- Executive Narrative Intro -->
+        <div class="dashboard-card">
+          <div class="summary-box" style="background: linear-gradient(135deg, var(--bg-tertiary), rgba(20, 184, 166, 0.05)); border-color: rgba(20, 184, 166, 0.15);">
+            <div class="summary-illustration" style="color: var(--accent); background: var(--accent-glow); border-color: rgba(20, 184, 166, 0.2);">
+              <i data-lucide="heart-handshake"></i>
+            </div>
+            <div class="summary-text">
+              <h3>The Human Challenge of AI Transformation</h3>
+              <p>
+                The biggest barrier to AI adoption is not technology, but people. Employees often lack confidence in AI, managers are unsure how to integrate it into daily workflows, and executives struggle to align AI initiatives with business objectives. RetailAI Catalyst builds an organizational environment where AI is understood, trusted, and embraced before any large-scale implementation takes place.
+              </p>
+            </div>
           </div>
         </div>
 
         <div class="quiz-container">
           <!-- Quiz Form -->
           <div class="quiz-card" id="quiz-card-wrapper">
+            <h3 class="dashboard-card-title" style="margin-bottom: 1rem;"><i data-lucide="clipboard-list"></i> AI Readiness Diagnostic</h3>
             <div class="quiz-progress-bar">
               <div class="quiz-progress-step active" data-step="1">1</div>
               <div class="quiz-progress-step" data-step="2">2</div>
@@ -482,8 +498,90 @@
           </div>
         </div>
 
+        <!-- Interactive AI Confidence Score Widget & Readiness Passport Program -->
+        <div class="dashboard-row">
+          <!-- AI Readiness Passport Program -->
+          <div class="dashboard-card">
+            <h3 class="dashboard-card-title">
+              <i data-lucide="award"></i> AI Readiness Passport Program
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Employees earn credentials by demonstrating practical AI usage. Select a department and stage to reveal required credentials:
+            </p>
+            
+            <div class="slider-container" style="margin-bottom: 1rem; padding: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                <div style="flex-grow: 1;">
+                  <label for="passport-dept" style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Select Department</label>
+                  <select id="passport-dept" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-xs); outline: none; margin-top: 0.25rem;">
+                    <option value="hr">Human Resources</option>
+                    <option value="marketing">Marketing & Creative</option>
+                    <option value="finance">Finance & Accounting</option>
+                    <option value="operations">Store Operations</option>
+                    <option value="cs">Customer Service</option>
+                  </select>
+                </div>
+                <div style="flex-grow: 1;">
+                  <label for="passport-stage" style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Select Stage Level</label>
+                  <select id="passport-stage" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-xs); outline: none; margin-top: 0.25rem;">
+                    <option value="explorer">Explorer (Level 1)</option>
+                    <option value="practitioner">Practitioner (Level 2)</option>
+                    <option value="champion">Champion (Level 3)</option>
+                    <option value="leader">AI Leader (Level 4)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="rollout-path-box" style="border-color: rgba(99, 102, 241, 0.2);">
+              <h5 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem;" id="passport-display-title">
+                <i data-lucide="shield-check"></i> HR Explorer Stamp Required
+              </h5>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;" id="passport-display-criteria">
+                Complete AI Policy Navigator onboarding & complete 5 automated policy searches.
+              </p>
+            </div>
+          </div>
+
+          <!-- AI Confidence Score Tracker -->
+          <div class="dashboard-card" style="display: flex; flex-direction: column;">
+            <h3 class="dashboard-card-title">
+              <i data-lucide="gauge"></i> AI Confidence Score Tracker
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Measures trust, comfort, and willingness of staff (updated via monthly pulse checks):
+            </p>
+            <div class="progress-list" style="flex-grow: 1; justify-content: space-around;">
+              <!-- Marketing -->
+              <div class="progress-track-item">
+                <div class="progress-track-header">
+                  <span class="progress-track-title">Marketing & Creative</span>
+                  <span class="progress-track-pct" style="color: var(--status-approved);">82% Comfort</span>
+                </div>
+                <div class="progress-track-bar"><div class="progress-track-fill" style="width: 82%; background: var(--status-approved);"></div></div>
+              </div>
+              <!-- HR -->
+              <div class="progress-track-item">
+                <div class="progress-track-header">
+                  <span class="progress-track-title">Human Resources</span>
+                  <span class="progress-track-pct" style="color: var(--status-review);">48% Literacy Support</span>
+                </div>
+                <div class="progress-track-bar"><div class="progress-track-fill" style="width: 48%; background: var(--status-review);"></div></div>
+              </div>
+              <!-- CS -->
+              <div class="progress-track-item">
+                <div class="progress-track-header">
+                  <span class="progress-track-title">Customer Service</span>
+                  <span class="progress-track-pct" style="color: var(--status-risk);">38% Intervention Needed</span>
+                </div>
+                <div class="progress-track-bar"><div class="progress-track-fill" style="width: 38%; background: var(--status-risk);"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 12-Month Logic timeline for Pillar 1 -->
-        <div class="dashboard-card" style="margin-top: 1.5rem;">
+        <div class="dashboard-card">
           <h3 class="dashboard-card-title">
             <i data-lucide="calendar"></i> 12-Month Adoption & Change Strategy
           </h3>
