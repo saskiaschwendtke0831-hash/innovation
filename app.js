@@ -14,11 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     item.addEventListener('click', () => {
       const targetTab = item.getAttribute('data-tab');
       
-      // Update Navigation active state
       navItems.forEach(nav => nav.classList.remove('active'));
       item.classList.add('active');
       
-      // Update Tab Content display
       tabPanes.forEach(pane => {
         pane.classList.remove('active');
         if (pane.id === `${targetTab}-tab`) {
@@ -26,12 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Close mobile menu if open
       if (sidebar.classList.contains('mobile-open')) {
         sidebar.classList.remove('mobile-open');
       }
 
-      // Re-trigger layout-sensitive calculations or animations
       if (targetTab === 'readiness') {
         updateQuizCircle();
       } else if (targetTab === 'governance') {
@@ -42,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Hamburger Toggle for Mobile
   if (hamburger) {
     hamburger.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -50,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Click outside sidebar on mobile closes it
   document.addEventListener('click', (e) => {
     if (sidebar.classList.contains('mobile-open') && !sidebar.contains(e.target) && e.target !== hamburger) {
       sidebar.classList.remove('mobile-open');
@@ -590,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (passportDeptSelect && passportStageSelect) {
     passportDeptSelect.addEventListener('change', updatePassportCriteria);
     passportStageSelect.addEventListener('change', updatePassportCriteria);
-    updatePassportCriteria(); // Initial render
+    updatePassportCriteria(); 
   }
 
 
@@ -610,7 +604,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const val = parseInt(adoptionSlider.value);
     adoptionVal.textContent = `${val}%`;
 
-    // 1. Customer Service Time (12h down to 1.5h depending on scale)
     const csTime = (12 - (val / 100) * 10.5).toFixed(1);
     const csTimeEl = document.getElementById('metric-cs-time');
     const csPctEl = document.getElementById('metric-cs-pct');
@@ -621,7 +614,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (csPctEl) csPctEl.textContent = `${csPct}% Better`;
     if (csFillEl) csFillEl.style.width = `${csPct}%`;
 
-    // 2. Forecast Accuracy (Starts 68% -> scales up to 88%)
     const fcVal = Math.round(68 + (val / 100) * 20);
     const fcValEl = document.getElementById('metric-forecast-val');
     const fcPctEl = document.getElementById('metric-forecast-pct');
@@ -631,7 +623,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fcPctEl) fcPctEl.textContent = `${fcVal}%`;
     if (fcFillEl) fcFillEl.style.width = `${fcVal}%`;
 
-    // 3. Hours Saved per Month (scales from 0 up to 550)
     const hoursSaved = Math.round((val / 100) * 550);
     const hoursSavedEl = document.getElementById('metric-hours-saved');
     const hoursPctEl = document.getElementById('metric-hours-pct');
@@ -642,7 +633,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hoursPctEl) hoursPctEl.textContent = `${hoursPct}% Of Goal`;
     if (hoursFillEl) hoursFillEl.style.width = `${hoursPct}%`;
 
-    // 4. Yearly Savings (scales from 0 to $850K)
     const savings = Math.round((val / 100) * 850);
     const savingsEl = document.getElementById('metric-savings-val');
     const savingsPctEl = document.getElementById('metric-savings-pct');
@@ -653,7 +643,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savingsPctEl) savingsPctEl.textContent = `${savingsPct}% of Limit`;
     if (savingsFillEl) savingsFillEl.style.width = `${savingsPct}%`;
 
-    // 5. Training completion (matches adoption closely)
     const trainingVal = Math.round(val);
     const trainingValEl = document.getElementById('metric-training-val');
     const trainingPctEl = document.getElementById('metric-training-pct');
@@ -663,7 +652,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (trainingPctEl) trainingPctEl.textContent = `${trainingVal}%`;
     if (trainingFillEl) trainingFillEl.style.width = `${trainingVal}%`;
 
-    // 6. Customer Retention (scales from 78% to 88%)
     const retentionVal = Math.round(78 + (val / 100) * 10);
     const retentionValEl = document.getElementById('metric-retention-val');
     const retentionPctEl = document.getElementById('metric-retention-pct');
@@ -673,7 +661,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (retentionPctEl) retentionPctEl.textContent = `${retentionVal}%`;
     if (retentionFillEl) retentionFillEl.style.width = `${retentionVal}%`;
 
-    // Update dynamically all 21 cells inside the KPI Framework table
     updateKpiFrameworkTable(val);
   }
 
@@ -714,7 +701,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (el) el.textContent = text;
   }
 
-  // Handle KPI Category filtering buttons
   const kpiTabBtns = document.querySelectorAll('.kpi-tab-btn');
   const kpiCards = document.querySelectorAll('.kpi-card');
 
@@ -738,9 +724,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /*****************************************
-   * 10. SCALING TIMELINE INTERACTION
+   * 10. NON-LINEAR SCALING TIMELINE WIDGET
    *****************************************/
   const timelinePhases = document.querySelectorAll('.timeline-phase');
+  const loopBtns = document.querySelectorAll('.loopback-btn');
 
   timelinePhases.forEach(phase => {
     phase.addEventListener('click', () => {
@@ -748,5 +735,144 @@ document.addEventListener('DOMContentLoaded', () => {
       phase.classList.add('active');
     });
   });
+
+  // Handle Loopback buttons interaction
+  loopBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Avoid triggering timeline phase selection
+      const phaseNum = btn.getAttribute('data-loop-btn');
+      const alertBox = document.getElementById(`loop-alert-${phaseNum}`);
+
+      if (alertBox) {
+        // Toggle visibility of the loop info panel
+        if (alertBox.style.display === 'block') {
+          alertBox.style.display = 'none';
+        } else {
+          // Hide all loop alerts first to stay clean
+          document.querySelectorAll('.loopback-alert-box').forEach(box => {
+            box.style.display = 'none';
+          });
+          alertBox.style.display = 'block';
+          alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    });
+  });
+
+
+  /*****************************************
+   * 11. CASE STUDY INTERACTIVE SIMULATOR
+   *****************************************/
+  const caseNextBtn = document.getElementById('case-next-btn');
+  const casePrevBtn = document.getElementById('case-prev-btn');
+  const caseChapterTitle = document.getElementById('case-chapter-title');
+  const caseChapterBody = document.getElementById('case-chapter-body');
+  const caseDots = document.querySelectorAll('.case-study-dot');
+
+  let currentChapter = 1;
+  const chapters = [
+    {
+      title: "Chapter 1: The Starting Point (Ambition & Challenge)",
+      body: "A large European fashion retailer operates both physical stores and e-commerce portals. Early disconnected pilots had failed to scale. Customer records remain siloed, demand forecasts are inconsistent, and staff show low confidence. They adopt the RetailAI Catalyst program.",
+      phase: 1,
+      alert: null
+    },
+    {
+      title: "Chapter 2: Pillar 1 & The First Loop (Leadership Alignment)",
+      body: "Senior leadership runs AI workshops, assigns sponsors, and defines priority areas. However, employee trust surveys reveal high change uncertainty. Recognizing this baseline weakness early, the retailer cycles back within Phase 1, strengthening communication and manager training before moving forward.",
+      phase: 1,
+      alert: 1
+    },
+    {
+      title: "Chapter 3: Pillar 2 & Pilot Check (Education & Testing)",
+      body: "With improved trust, the retailer enters Phase 2. Role-specific learning journeys and AI passports roll out alongside HR policy, marketing, and CS support pilots. Although CS has high usage, marketing adoption stalls. The framework triggers a loopback: scaling is paused while the team simplifies workflows and coaches marketing managers.",
+      phase: 2,
+      alert: 2
+    },
+    {
+      title: "Chapter 4: Pillar 3 & The Trust Loop (Department Integration)",
+      body: "Successful pilots scale to additional store locations, and departments link via the Snowflake/BigQuery intelligence hub. Inventory forecasting improves significantly. However, operations teams report difficulty trusting automated stock schedules. The framework cycles back to Phase 1 targeted training once again.",
+      phase: 3,
+      alert: 3
+    },
+    {
+      title: "Chapter 5: Pillar 4 & Measurement (Outcome Review)",
+      body: "Department leads review the 21 KPIs (Adoption, Efficiency, Value). Successful pilots move forward into standard operating templates, while underperforming ones (e.g. content variations failing to show ROI) are flagged and sent back for redesign, focusing only on solutions that generate actual business value.",
+      phase: 4,
+      alert: null
+    },
+    {
+      title: "Chapter 6: Pillar 5 & Continuous Scaling (Plan-Do-Check-Act)",
+      body: "Validated tools roll out nationally. Personalization and computer-vision store heatmaps go live. Scaling remains conditional: if adoption or value gains slip, the Plan-Do-Check-Act (PDCA) cycle automatically triggers a return to earlier pillars to strengthen training or alignment.",
+      phase: 5,
+      alert: 5
+    }
+  ];
+
+  function renderChapter() {
+    const chap = chapters[currentChapter - 1];
+    if (!chap) return;
+
+    // Update text content
+    caseChapterTitle.textContent = chap.title;
+    caseChapterBody.textContent = chap.body;
+
+    // Update progress dots
+    caseDots.forEach((dot, index) => {
+      dot.classList.remove('active');
+      if (index + 1 === currentChapter) {
+        dot.classList.add('active');
+      }
+    });
+
+    // Update timeline active state & trigger loop alerts
+    timelinePhases.forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.loopback-alert-box').forEach(box => {
+      box.style.display = 'none';
+    });
+
+    const activeTimelinePhase = document.querySelector(`.timeline-phase[data-phase="${chap.phase}"]`);
+    if (activeTimelinePhase) {
+      activeTimelinePhase.classList.add('active');
+      // Scroll timeline area slightly to show it
+      activeTimelinePhase.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    if (chap.alert !== null) {
+      const activeAlertBox = document.getElementById(`loop-alert-${chap.alert}`);
+      if (activeAlertBox) {
+        activeAlertBox.style.display = 'block';
+      }
+    }
+
+    // Enable/disable buttons
+    casePrevBtn.disabled = currentChapter === 1;
+    if (currentChapter === chapters.length) {
+      caseNextBtn.textContent = "Restart Case Study";
+    } else {
+      caseNextBtn.textContent = "Next Chapter";
+    }
+  }
+
+  if (caseNextBtn && casePrevBtn) {
+    caseNextBtn.addEventListener('click', () => {
+      if (currentChapter < chapters.length) {
+        currentChapter++;
+        renderChapter();
+      } else {
+        currentChapter = 1;
+        renderChapter();
+      }
+    });
+
+    casePrevBtn.addEventListener('click', () => {
+      if (currentChapter > 1) {
+        currentChapter--;
+        renderChapter();
+      }
+    });
+
+    renderChapter(); // Render initial chapter
+  }
 
 });
